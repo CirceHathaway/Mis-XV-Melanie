@@ -52,9 +52,55 @@
         .hero-photo-side { position: relative; width: 50%; height: 100%; z-index: 5; background-color: var(--purple-deep); }
         .hero-photo-actual { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
         .hero-text-side-container { position: relative; width: 50%; height: 100%; z-index: 5; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 30px 40px 100px; box-sizing: border-box; }
-        .vertical-separator-img { position: absolute; top: 0; left: -98%; height: 100%; width: auto; z-index: 15; pointer-events: none; object-fit: cover; }
-        .horizontal-separator-container { position: absolute; bottom: -80px; left: 0; width: 100%; z-index: 20; pointer-events: none; line-height: 0; filter: brightness(0.95); }
-        .horizontal-separator-img { width: 100%; height: auto; max-height: 250px; display: block; }
+        
+        /* --- CORRECCIÓN DEFINITIVA SEPARADOR VERTICAL --- */
+        .vertical-separator-img { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            height: 100%; 
+            width: auto; 
+            z-index: 15; 
+            pointer-events: none; 
+            object-fit: cover; /* Asegura que la imagen cubra la altura sin deformarse */
+            
+            /* TRUCO PARA EL HUECO:
+               En lugar de ponerlo al 100% (borde exacto), lo movemos un 99%.
+               Ese 1% de diferencia hace que la imagen se "monte" ligeramente 
+               sobre la foto, eliminando cualquier línea blanca o separación visible. */
+            transform: translateX(-53%); 
+        }
+
+        /* --- CORRECCIÓN DEFINITIVA SEPARADOR HORIZONTAL --- */
+        .horizontal-separator-container { 
+            position: absolute; 
+            bottom: -40px; /* Un píxel abajo para asegurar que selle el borde */
+            left: 0; 
+            width: 100%; 
+            z-index: 20; 
+            pointer-events: none; 
+            line-height: 0; 
+        }
+        
+        .horizontal-separator-img { 
+            display: block;
+            width: 100%; 
+            
+            /* SOLUCIÓN AL PROBLEMA DE OPERA:
+               Fijamos una altura específica. Usamos 'fill' para que la ola se 
+               estire a lo ancho pero mantenga siempre esta altura baja. 
+               Así nunca tapará el nombre 'Melanie'. */
+            height: 120px; 
+            object-fit: fill; 
+        }
+
+        /* Ajuste para pantallas muy grandes (PC Escritorio) para que la ola no se vea muy fina */
+        @media (min-width: 1400px) {
+            .horizontal-separator-img {
+                height: 160px; /* Un poco más alta en pantallas gigantes, pero controlada */
+            }
+        }
+
         .hero-text-content { position: relative; z-index: 5; text-align: center; max-width: 500px; }
         
         .hero .top-title { font-family: 'Cinzel Decorative', serif; font-weight: 700; font-size: 2.2rem; letter-spacing: 3px; margin-bottom: 0; text-transform: uppercase; line-height: 1; position: relative; top: -55px; background: var(--realistic-gold-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.5)); }
