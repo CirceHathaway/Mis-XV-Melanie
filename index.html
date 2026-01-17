@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Pinyon+Script&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
@@ -17,111 +16,59 @@
             --purple-light: #7c3aed;
             --gold: #fbbf24;
             --gold-glow: #fcd34d;
+            --gold-dark: #aa771c; 
             --text-color: #f3e8ff;
-            /* Degradado oro realista */
             --realistic-gold-gradient: linear-gradient(to bottom right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
         }
 
-        body, html {
+        html {
+            width: 100%;
+            overflow-x: hidden; /* Solo el html corta el ancho sobrante */
+        }
+
+        body {
             margin: 0;
             padding: 0;
+            width: 100%;
+            overflow: visible; /* IMPORTANTE: El body NO debe tener overflow hidden ni auto */
             font-family: 'Montserrat', sans-serif;
             background: linear-gradient(135deg, var(--purple-deep) 0%, #4c1d95 100%);
             color: var(--text-color);
-            overflow-x: hidden;
             text-align: center;
-        }
-
-        /* --- Header & Hero --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             position: relative;
-            z-index: 10;
-            padding: 20px;
-            padding-top: 0; 
         }
 
-        .hero .top-title {
-            font-family: 'Cinzel Decorative', serif;
-            font-weight: 700;
-            font-size: 2.5rem;
-            letter-spacing: 5px;
-            margin-bottom: 0;
-            text-transform: uppercase;
-            position: relative;
-            top: -10px;
-            
-            background: var(--realistic-gold-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.5));
-        }
+        .no-scroll { overflow: hidden !important; }
 
-        .hero h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 7rem;
-            margin: 10px 0;
-            line-height: 1.3; 
-            animation: fadeIn 2s ease-in;
-            margin-top: 30px;
-            
-            padding-left: 30px;
-            padding-right: 30px;
-            box-sizing: border-box;
-            width: 100%;
-
-            background: var(--realistic-gold-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
-        }
-
-        .hero .subtitle {
-            font-family: 'Pinyon Script', cursive;
-            font-size: 3rem;
-            color: white; 
-            margin-top: 5px;
-            text-shadow: 0 0 5px rgba(0,0,0,0.5);
-            letter-spacing: 1px;
-        }
-
-        .sun-icon {
-            font-size: 3.5rem;
-            color: var(--gold);
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 15px var(--gold-glow));
-            animation: spin 15s linear infinite;
-            position: relative;
-            top: 0px;
-        }
+        /* HERO & GENERAL */
+        .hero { position: relative; width: 100%; height: 100vh; min-height: 650px; display: flex; padding: 0; overflow: visible; }
+        .hero-split-layout { display: flex; width: 100%; height: 100%; position: relative; overflow: visible; }
+        .hero-photo-side { position: relative; width: 50%; height: 100%; z-index: 5; background-color: var(--purple-deep); }
+        .hero-photo-actual { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
+        .hero-text-side-container { position: relative; width: 50%; height: 100%; z-index: 5; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 30px 40px 100px; box-sizing: border-box; }
+        .vertical-separator-img { position: absolute; top: 0; left: -98%; height: 100%; width: auto; z-index: 15; pointer-events: none; object-fit: cover; }
+        .horizontal-separator-container { position: absolute; bottom: -80px; left: 0; width: 100%; z-index: 20; pointer-events: none; line-height: 0; filter: brightness(0.95); }
+        .horizontal-separator-img { width: 100%; height: auto; max-height: 250px; display: block; }
+        .hero-text-content { position: relative; z-index: 5; text-align: center; max-width: 500px; }
+        
+        .hero .top-title { font-family: 'Cinzel Decorative', serif; font-weight: 700; font-size: 2.2rem; letter-spacing: 3px; margin-bottom: 0; text-transform: uppercase; line-height: 1; position: relative; top: -55px; background: var(--realistic-gold-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.5)); }
+        .hero h1 { font-family: 'Great Vibes', cursive; font-size: 8.5rem; margin: 0; margin-top: 5px; line-height: 1.4; padding: 0 20px; padding-bottom: 15px; position: relative; top: -20px; background: var(--realistic-gold-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3)); }
+        .hero-quote { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; line-height: 1.5; font-style: italic; margin: -40px 0 25px 0; color: rgba(255, 255, 255, 0.9); }
+        .hero-quote i { color: var(--gold); margin: 0 5px; }
+        .sun-icon { font-size: 3.5rem; color: var(--gold); margin-bottom: 15px; filter: drop-shadow(0 0 15px var(--gold-glow)); animation: spin 15s linear infinite; position: relative; top: -80px; }
 
         /* --- EFECTO POLVO DE HADAS --- */
-        .firefly-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
+        .firefly-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+        .firefly { position: absolute; width: 4px; height: 4px; background-color: var(--gold-glow); border-radius: 50%; box-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold-glow); opacity: 0; animation: flickerFloat linear forwards; }
 
-        .firefly {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background-color: var(--gold-glow);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold-glow);
-            opacity: 0;
-            animation: flickerFloat linear forwards;
+        /* --- Animación de Linternas --- */
+        .lantern-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
+        .lantern { position: absolute; background-image: url('lantern.png'); background-size: contain; background-repeat: no-repeat; background-position: center bottom; width: 50px; height: 70px; opacity: 0.9; bottom: -80px; filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.7)); animation: floatUp 15s linear infinite; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.95; }
+            100% { transform: translateY(-140vh) translateX(40px) rotate(8deg); opacity: 0; }
         }
 
         @keyframes flickerFloat {
@@ -131,381 +78,360 @@
             80% { opacity: 0.8; }
             100% { opacity: 0; transform: scale(0) translate(var(--moveX), var(--moveY)); }
         }
+        
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        /* --- Animación de Linternas --- */
-        .lantern-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .lantern {
-            position: absolute;
-            background-image: url('lantern.png'); 
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center bottom;
-            width: 50px; 
-            height: 70px;
-            opacity: 0.9;
-            bottom: -80px; 
-            filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.7)); 
-            animation: floatUp 15s linear infinite;
-        }
+        /* SECCIÓN INTERMEDIA (CONTADOR) */
+        .after-hero-container { position: relative; width: 100%; z-index: 5; padding-top: 120px; padding-bottom: 60px; display: flex; flex-direction: column; align-items: center; }
+        .countdown-container { display: flex; flex-direction: column; align-items: center; width: 100%; }
+        .subtitle { font-family: 'Pinyon Script', cursive; font-size: 4.5rem; color: var(--text-color); margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
 
         /* --- CUENTA REGRESIVA --- */
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 50px 0;
-            flex-wrap: wrap;
-        }
+        .countdown { display: flex; justify-content: center; gap: 20px; margin: 40px 0; flex-wrap: wrap; }
+        .time-box { display: flex; flex-direction: column; justify-content: center; align-items: center; width: 120px; height: 120px; background: rgba(46, 16, 101, 0.6); border: 2px solid var(--gold); border-radius: 50%; box-shadow: 0 0 15px rgba(251, 191, 36, 0.4); backdrop-filter: blur(5px); }
+        .time-val { font-family: 'Cinzel Decorative', serif; font-weight: 700; font-size: 2.4rem; color: var(--gold); line-height: 1; }
+        .time-label { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; text-transform: uppercase; margin-top: 5px; letter-spacing: 1px; }
 
-        .time-box {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 85px;
-            height: 85px;
-            background: rgba(46, 16, 101, 0.6);
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
-            backdrop-filter: blur(5px);
-        }
+        .btn-hero { display: inline-block; padding: 15px 45px; background: linear-gradient(45deg, var(--gold), var(--gold-glow)); color: var(--purple-deep); text-decoration: none; border-radius: 50px; font-family: 'Cinzel Decorative', serif; font-weight: 700; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4); }
 
-        .time-val {
-            font-family: 'Cinzel Decorative', serif;
-            font-weight: 700;
-            font-size: 1.8rem;
-            color: var(--gold);
-            line-height: 1;
-        }
-
-        .time-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            margin-top: 5px;
-            letter-spacing: 1px;
-        }
-
-        /* --- SECCIONES (Escritorio) --- */
-        .section {
+        /* 2. CAMBIO: CSS para la animación suave de aparición de secciones */
+        .section { 
             padding: 60px 20px; 
-            position: relative;
-            z-index: 10;
-            background: rgba(46, 16, 101, 0.9);
+            position: relative; 
+            z-index: 10; 
+            background: rgba(46, 16, 101, 0.9); 
             margin: 60px 20px; 
-            border: 3px double var(--gold);
+            border: 3px double var(--gold); 
             border-radius: 15px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            max-width: 800px;
-            margin-left: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            max-width: 800px; 
+            margin-left: auto; 
             margin-right: auto;
-            overflow: visible;
-
-            /* SCROLL REVEAL */
+            
+            /* Estado inicial invisible y desplazado hacia abajo */
             opacity: 0;
-            transform: translateY(100px);
-            transition: all 1.2s ease-out;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
+        /* Clase que añade JS cuando la sección es visible */
         .section.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .section h2 {
-            font-family: 'Cinzel Decorative', serif;
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-bottom: 1px solid rgba(251, 191, 36, 0.3);
-            display: inline-block;
-            padding-bottom: 10px;
-
-            background: var(--realistic-gold-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));
-        }
-
-        .section h3 {
-             font-family: 'Cinzel Decorative', serif;
-             color: #e9d5ff;
-        }
-
-        /* --- Decoración de esquinas --- */
-        .corner-deco {
-            position: absolute;
-            padding: 0;
-            background-color: transparent;
-            z-index: 20; 
-            filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); 
-        }
-
-        .corner-deco img {
-            width: 95px; 
-            height: auto;
-            display: block;
-        }
-
+        .section h2 { font-family: 'Cinzel Decorative', serif; font-size: 2.2rem; margin-bottom: 30px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid rgba(251, 191, 36, 0.3); display: inline-block; padding-bottom: 10px; background: var(--realistic-gold-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5)); }
+        
+        .corner-deco { position: absolute; padding: 0; background-color: transparent; z-index: 20; }
+        .corner-deco img { width: 95px; height: auto; display: block; }
         .corner-top-left { top: -60px; left: -45px; }
         .corner-top-right { top: -60px; right: -45px; }
         .corner-bottom-left { bottom: -50px; left: -45px; }
         .corner-bottom-right { bottom: -50px; right: -45px; }
 
-        /* Botón Estilo */
-        .btn {
-            display: inline-block;
-            padding: 15px 40px;
-            margin-top: 25px;
-            background: linear-gradient(45deg, var(--gold), var(--gold-glow));
-            color: var(--purple-deep);
-            text-decoration: none;
-            border-radius: 50px;
-            font-family: 'Cinzel Decorative', serif;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(251, 191, 36, 0.6);
-        }
-
-        /* --- ESTILOS FECHA --- */
-        .big-date-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            margin-bottom: 20px;
-        }
-
-        .date-day-name {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: #e9d5ff;
-        }
-
-        .date-number-big {
-            font-family: 'Cinzel Decorative', serif;
-            font-size: 7rem;
-            line-height: 1;
-            margin: 10px 0;
-
-            background: var(--realistic-gold-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.4));
-        }
-
-        .date-month-year {
-            font-family: 'Pinyon Script', cursive;
-            font-size: 2.5rem;
-            color: #fff;
-        }
-
-        .time-box-styled {
-            margin-top: 20px;
-            padding: 10px 40px;
-            border-top: 2px solid var(--gold);
-            border-bottom: 2px solid var(--gold);
-            display: inline-block;
-        }
-
-        .time-text {
-            font-family: 'Cinzel Decorative', serif;
-            font-size: 2rem;
-            background: var(--realistic-gold-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.4));
-        }
-
-        /* --- ESTILOS LUGAR --- */
-        .venue-subtitle {
-            font-family: 'Pinyon Script', cursive;
-            font-size: 2rem;
-            color: #e9d5ff;
-            margin-bottom: 10px;
-        }
-
-        .venue-name {
-            font-family: 'Cinzel Decorative', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin: 10px 0;
-            line-height: 1.2;
-
-            background: var(--realistic-gold-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            filter: drop-shadow(0 3px 3px rgba(0,0,0,0.4));
-        }
-
-        .venue-address {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
-            color: #fff;
-            margin-bottom: 25px;
-            margin-top: 25px; 
-            letter-spacing: 1px;
-        }
-
-        footer {
-            padding: 30px 20px;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
-            position: relative;
-            z-index: 10;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.95; }
-            100% { transform: translateY(-140vh) translateX(40px) rotate(8deg); opacity: 0; }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .big-date-container { display: flex; flex-direction: column; align-items: center; gap: 5px; margin-bottom: 20px; }
+        .date-day-name { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; letter-spacing: 5px; text-transform: uppercase; color: #e9d5ff; }
+        .date-number-big { font-family: 'Cinzel Decorative', serif; font-size: 7rem; line-height: 1; margin: 10px 0; background: var(--realistic-gold-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 5px 5px rgba(0,0,0,0.4)); }
+        .date-month-year { font-family: 'Pinyon Script', cursive; font-size: 2.5rem; color: #fff; }
+        .time-box-styled { margin-top: 20px; padding: 10px 40px; border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold); display: inline-block; }
+        .time-text { font-family: 'Cinzel Decorative', serif; font-size: 2rem; background: var(--realistic-gold-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
         
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+        .btn { display: inline-block; padding: 15px 40px; margin-top: 25px; background: linear-gradient(45deg, var(--gold), var(--gold-glow)); color: var(--purple-deep); text-decoration: none; border-radius: 50px; font-family: 'Cinzel Decorative', serif; font-weight: 700; font-size: 1rem; transition: all 0.3s ease; border: none; cursor: pointer; box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4); }
+        .btn:hover { transform: translateY(-3px) scale(1.05); }
 
-        /* --- AJUSTES PARA CELULAR (Mobile Responsive) --- */
-        @media (max-width: 600px) {
-            .hero .top-title { 
-                font-size: 1.8rem;
-                top: -30px;
+        .venue-name { font-family: 'Cinzel Decorative', serif; font-size: 2.5rem; font-weight: 700; text-transform: uppercase; margin: 10px 0; background: var(--realistic-gold-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .venue-subtitle { font-family: 'Pinyon Script', cursive; font-size: 2rem; color: #e9d5ff; }
+        .venue-address { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; color: #fff; margin-bottom: 25px; letter-spacing: 1px; }
+
+        .golden-line { width: 100%; height: 2px; background: var(--realistic-gold-gradient); margin: 0; box-shadow: 0 0 10px rgba(251, 191, 36, 0.5); position: relative; z-index: 5; }
+
+        .gallery-wrapper { width: 100%; overflow: hidden; background: rgba(0, 0, 0, 0.2); padding: 50px 0; position: relative; z-index: 10; cursor: grab; }
+        .gallery-wrapper:active { cursor: grabbing; }
+
+        .gallery-title { font-family: 'Cinzel Decorative', serif; font-size: 2.2rem; margin-bottom: 40px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; display: inline-block; background: var(--realistic-gold-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5)); }
+
+        .carousel-container { display: flex; gap: 30px; width: max-content; will-change: transform; }
+
+        .polaroid-item { flex: 0 0 260px; position: relative; background-color: #fff; padding: 15px 15px 50px 15px; border: 4px solid var(--gold); box-shadow: 0 10px 20px rgba(0,0,0,0.4); border-radius: 2px; user-select: none; }
+        .polaroid-item img { display: block; width: 100%; height: 300px; object-fit: cover; border: 1px solid #eee; pointer-events: none; }
+
+        .modal-overlay, .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s; }
+        .modal-overlay { background-color: var(--purple-deep); }
+        .lightbox-overlay { background-color: rgba(0,0,0,0.95); z-index: 5000; }
+        .active { display: flex; opacity: 1; }
+
+        .modal-content { background: rgba(46, 16, 101, 0.95); border: 3px double var(--gold); border-radius: 15px; padding: 40px 20px; width: 90%; max-width: 600px; text-align: center; position: relative; box-shadow: 0 0 30px rgba(0,0,0,0.8); animation: zoomIn 0.3s; }
+        .modal-title { font-family: 'Cinzel Decorative', serif; font-size: 1.6rem; color: transparent; background: var(--realistic-gold-gradient); -webkit-background-clip: text; background-clip: text; border-bottom: 1px solid rgba(251, 191, 36, 0.3); padding-bottom: 10px; display: inline-block; margin-bottom: 20px; }
+        
+        .close-modal { position: absolute; top: 15px; right: 15px; width: 32px; height: 32px; border: 2px solid var(--purple-deep); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; background: var(--gold); color: var(--purple-deep); cursor: pointer; transition: transform 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .close-modal:hover { transform: scale(1.1); }
+
+        .lightbox-img { max-width: 90%; max-height: 80vh; border: 10px solid #fff; box-shadow: 0 0 30px rgba(251, 191, 36, 0.3); transform: scale(0.8); transition: transform 0.3s; }
+        .active .lightbox-img { transform: scale(1); }
+        .lightbox-close { position: absolute; top: 20px; right: 20px; color: var(--gold); font-size: 3rem; cursor: pointer; }
+
+        .map-wrapper { position: relative; width: 100%; height: 300px; margin: 20px 0; border: 2px solid var(--gold); border-radius: 10px; overflow: hidden; background: var(--purple-deep); }
+        .map-frame { width: 100%; height: 100%; border: none; opacity: 0; transition: opacity 0.5s; position: relative; z-index: 2; }
+        .map-frame.loaded { opacity: 1; }
+        .map-loader { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 40px; height: 40px; border: 4px solid rgba(251,191,36,0.3); border-top: 4px solid var(--gold); border-radius: 50%; animation: spinLoader 1s linear infinite; z-index: 1; }
+        
+        .modal-btn-option { display: block; width: 80%; margin: 15px auto; padding: 15px; background: transparent; border: 1px solid var(--gold); color: var(--gold); font-family: 'Montserrat', sans-serif; text-transform: uppercase; text-decoration: none; border-radius: 10px; transition: all 0.3s; }
+        .modal-btn-option:hover { background: var(--gold); color: var(--purple-deep); font-weight: bold; }
+
+        .toast { visibility: hidden; min-width: 250px; background-color: var(--purple-deep); color: var(--gold); text-align: center; border: 2px solid var(--gold); border-radius: 50px; padding: 16px; position: fixed; z-index: 3000; left: 50%; bottom: 30px; transform: translateX(-50%); font-weight: 500; box-shadow: 0 0 15px rgba(251,191,36,0.5); opacity: 0; transition: opacity 0.5s, bottom 0.5s; }
+        .toast.show { visibility: visible; opacity: 1; bottom: 50px; }
+
+        @keyframes zoomIn { from { transform: scale(0.8); } to { transform: scale(1); } }
+        @keyframes spinLoader { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+
+        /* =========================================
+       MEDIA QUERIES (VERSIÓN CELULAR)
+       ========================================= */
+        @media (max-width: 768px) {
+            
+            /* 1. REESTRUCTURA DEL HERO (Foto arriba, texto abajo) */
+            .hero {
+                height: auto;         /* Ya no forzamos altura fija */
+                min-height: auto;     /* Permitimos que crezca */
+                flex-direction: column; /* Apilamos los elementos */
+                overflow-x: hidden;
             }
 
-            .hero .sun-icon { top: -30px; }
+            .hero-split-layout {
+                flex-direction: column; /* Cambia de lado-a-lado a arriba-abajo */
+                height: auto;
+            }
+
+            .hero-photo-side {
+                width: 100%;          /* Ancho completo */
+                height: 50vh;         /* Ocupa la mitad de la pantalla verticalmente */
+                min-height: 350px;    /* Altura mínima de seguridad */
+            }
+
+            .hero-text-side-container {
+                width: 100%;
+                height: auto;
+                padding: 60px 15px 40px 15px; /* Más padding arriba para dar aire al separador */
+            }
+
+            /* 2. MANEJO DE SEPARADORES */
+            .vertical-separator-img {
+                display: none; /* Ocultamos el separador vertical */
+            }
+
+            .horizontal-separator-container {
+                bottom: auto; /* Quitamos la posición de abajo */
+                top: 44vh;    /* Lo ubicamos justo donde termina la foto (un poco antes para que tape) */
+                /* Ajuste: Si la foto mide 50vh, ponerlo en 44vh hace que "muerda" la foto */
+            }
             
-            .hero h1 { 
-                font-size: 4rem; /* Un poco más chico para asegurar */
-                margin-top: -10px; 
-                padding-left: 10px; 
-                padding-right: 10px;
+            .horizontal-separator-img {
+                height: auto;
+                max-height: 120px; /* Hacemos el separador un poco más sutil en móvil */
+            }
+
+            /* 3. TIPOGRAFÍA Y TAMAÑOS REDUCIDOS */
+            .hero .top-title {
+                font-size: 1.5rem;
+                letter-spacing: 2px;
+                top: 0; /* Reseteamos posiciones negativas excesivas */
+                margin-bottom: 10px;
+            }
+
+            .hero h1 {
+                font-size: 4.5rem; /* Reducimos drásticamente el nombre */
+                top: 0;
+                line-height: 1.1;
+            }
+
+            .sun-icon {
+                font-size: 2.5rem;
+                top: 0;
+                margin-bottom: 25px;
+            }
+
+            .hero-quote {
+                font-size: 1rem;
+                margin: 20px 0;
+                padding: 0 10px;
+            }
+
+            /* 4. AJUSTE DEL CONTADOR (Círculos más chicos) */
+            .after-hero-container {
+                padding-top: 40px; /* Menos espacio arriba */
+            }
+            
+            .subtitle {
+                font-size: 2.8rem; /* Subtítulo más chico */
+                padding: 0 10px;
+            }
+
+            .countdown {
+                gap: 10px; /* Menos espacio entre relojes */
+                margin: 30px 0;
+            }
+
+            .time-box {
+                width: 75px;  /* Círculos mucho más chicos (antes 120px) */
+                height: 75px;
+            }
+
+            .time-val {
+                font-size: 1.5rem; /* Números más chicos */
+            }
+
+            .time-label {
+                font-size: 0.6rem;
+            }
+
+            /* 5. AJUSTES DE SECCIONES GENERALES */
+            .section {
+                margin: 40px 15px; /* Menos margen lateral */
+                padding: 40px 15px;
             }
 
             .section h2 {
+                font-size: 1.8rem;
+            }
+
+            /* Bloque Fecha */
+            .date-number-big {
+                font-size: 4rem;
+            }
+            .date-month-year {
+                font-size: 1.8rem;
+            }
+            .date-day-name {
+                font-size: 1.2rem;
+            }
+
+            /* Bloque Lugar */
+            .venue-name {
+                font-size: 1.8rem;
+            }
+            .venue-subtitle {
                 font-size: 1.6rem;
             }
-            
-            .hero .subtitle { font-size: 1.8rem; }
-            .countdown { gap: 10px; }
-            .time-box { width: 70px; height: 70px; }
-            .time-val { font-size: 1.5rem; }
 
-            /* SECCIONES EN CELULAR: Más margen externo, menos padding interno */
-            .section {
-                margin: 50px 35px; /* Más separado de los bordes de la pantalla */
-                padding: 40px 10px; /* Menos espacio interno para que entre el texto */
-                width: auto; /* Dejar que el navegador calcule el ancho */
+            /* Carrusel */
+            .gallery-title {
+                font-size: 1.5rem;
+                padding: 0 15px;
             }
             
-            /* Ajuste para que NADA se salga de la sección */
-            .section * {
-                max-width: 100%;
-                word-wrap: break-word; /* Romper palabras largas si es necesario */
+            /* Ajuste de esquineros decorativos para que no molesten al texto */
+            .corner-deco img {
+                width: 60px; /* Esquineros más pequeños */
             }
-            
-            .corner-deco img { width: 60px; }
-            .corner-top-left { top: -30px; left: -30px; }
-            .corner-top-right { top: -30px; right: -30px; }
-            .corner-bottom-left { bottom: -25px; left: -30px; }
-            .corner-bottom-right { bottom: -25px; right: -30px; }
-            
-            /* Ajuste de textos gigantes para que entren en la sección más angosta */
-            .date-number-big { font-size: 4.5rem; } 
-            .date-month-year { font-size: 1.8rem; }
-            .venue-name { font-size: 1.5rem; line-height: 1.3; }
-            .venue-subtitle { font-size: 1.5rem; }
+            .corner-top-left { top: -30px; left: -20px; }
+            .corner-top-right { top: -30px; right: -20px; }
+            .corner-bottom-left { bottom: -25px; left: -20px; }
+            .corner-bottom-right { bottom: -25px; right: -20px; }
+
+            /* Modal */
+            .modal-content {
+                width: 85%;
+                padding: 30px 15px;
+            }
         }
+
     </style>
 </head>
 <body>
 
     <div class="firefly-container" id="fireflies"></div>
     <div class="lantern-container" id="lanterns"></div>
+    <div id="customToast" class="toast">¡CBU copiado al portapapeles!</div>
+
+    <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
+        <span class="lightbox-close">×</span>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="Foto Ampliada">
+    </div>
 
     <header class="hero">
-        <div class="sun-icon"><i class="fas fa-sun"></i></div>
-        <div class="top-title">MIS XV AÑOS</div>
-        <h1>Melanie</h1>
-        <div class="subtitle">¡Prepárate porque faltan!</div>
-        
-        <div class="countdown">
-            <div class="time-box"><span class="time-val" id="days">00</span><span class="time-label">Días</span></div>
-            <div class="time-box"><span class="time-val" id="hours">00</span><span class="time-label">Hs</span></div>
-            <div class="time-box"><span class="time-val" id="minutes">00</span><span class="time-label">Min</span></div>
-            <div class="time-box"><span class="time-val" id="seconds">00</span><span class="time-label">Seg</span></div>
+        <div class="hero-split-layout">
+            <div class="hero-photo-side"><img src="portada.jpg" alt="Melanie" class="hero-photo-actual"></div>
+            <div class="hero-text-side-container">
+                <img src="image_19.png" class="vertical-separator-img" alt="">
+                <div class="hero-text-content">
+                    <div class="sun-icon"><i class="fas fa-sun"></i></div>
+                    <div class="top-title">Mis 15 Años</div>
+                    <h1>Melanie</h1>
+                    <div class="hero-quote">
+                        <i class="fas fa-quote-left"></i>Te espero para compartir la alegría de esa noche que será para mí mágica, inolvidable y única.<i class="fas fa-quote-right"></i>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <a href="#detalles" class="btn" id="scrollBtn">Ver Detalles</a>
+        <div class="horizontal-separator-container"><img src="image_24.png" class="horizontal-separator-img" alt=""></div>
     </header>
 
-    <section id="detalles" class="section">
-        <div class="corner-deco corner-top-left"><img src="image_1.png" alt="Sol de Rapunzel"></div>
-        <div class="corner-deco corner-top-right"><img src="image_1.png" alt="Sol de Rapunzel"></div>
-        <div class="corner-deco corner-bottom-left"><img src="image_2.png" alt="Flor Dorada"></div>
-        <div class="corner-deco corner-bottom-right"><img src="image_2.png" alt="Flor Dorada"></div>
+    <div class="after-hero-container">
+        <div class="countdown-container">
+            <div class="subtitle">¡Prepárate porque faltan!</div>
+            <div class="countdown">
+                <div class="time-box"><span class="time-val" id="days">00</span><span class="time-label">Días</span></div>
+                <div class="time-box"><span class="time-val" id="hours">00</span><span class="time-label">Hs</span></div>
+                <div class="time-box"><span class="time-val" id="minutes">00</span><span class="time-label">Min</span></div>
+                <div class="time-box"><span class="time-val" id="seconds">00</span><span class="time-label">Seg</span></div>
+            </div>
+            <a href="#detalles" class="btn-hero" id="scrollBtn">Ver Detalles</a>
+        </div>
+    </div>
 
+    <section id="detalles" class="section">
+        <div class="corner-deco corner-top-left"><img src="image_1.png" alt=""></div>
+        <div class="corner-deco corner-top-right"><img src="image_1.png" alt=""></div>
+        <div class="corner-deco corner-bottom-left"><img src="image_2.png" alt=""></div>
+        <div class="corner-deco corner-bottom-right"><img src="image_2.png" alt=""></div>
         <h2>Celebración</h2>
-        
         <div class="big-date-container">
             <div class="date-day-name">SÁBADO</div>
             <div class="date-number-big">05</div>
             <div class="date-month-year">de Diciembre, 2026</div>
-            
-            <div class="time-box-styled">
-                <div class="time-text">21:00 Hs</div>
-            </div>
+            <div class="time-box-styled"><div class="time-text">21:00 Hs</div></div>
+            <button class="btn" style="margin-top:15px;padding:10px 30px;font-size:0.9rem;" onclick="openModal('calendarModal')"><i class="far fa-calendar-alt"></i> Agendar</button>
         </div>
     </section>
 
     <section class="section">
-        <div class="corner-deco corner-top-left"><img src="image_1.png" alt="Sol de Rapunzel"></div>
-        <div class="corner-deco corner-top-right"><img src="image_1.png" alt="Sol de Rapunzel"></div>
-        <div class="corner-deco corner-bottom-left"><img src="image_2.png" alt="Flor Dorada"></div>
-        <div class="corner-deco corner-bottom-right"><img src="image_2.png" alt="Flor Dorada"></div>
-
+        <div class="corner-deco corner-top-left"><img src="image_1.png" alt=""></div>
+        <div class="corner-deco corner-top-right"><img src="image_1.png" alt=""></div>
+        <div class="corner-deco corner-bottom-left"><img src="image_2.png" alt=""></div>
+        <div class="corner-deco corner-bottom-right"><img src="image_2.png" alt=""></div>
         <h2>Lugar de Encuentro</h2>
-        
         <div class="venue-subtitle">Te espero en...</div>
         <div class="venue-name">Salón "SMILE Black"</div>
         <div class="venue-address">Boulogne Sur Mer 633, Pacheco Buenos Aires</div>
+        <button class="btn" style="padding:15px 35px;font-size:1rem;" onclick="openModal('mapModal')">¿Cómo Llegar?</button>
+    </section>
+
+    <div class="golden-line"></div>
+
+    <div class="gallery-wrapper" id="galleryWrapper">
+        <h2 class="gallery-title">Un recorrido de estos 15 años</h2>
         
-        <a href="https://maps.app.goo.gl/pgJR7Snx4GjZHBY3A" target="_blank" class="btn" style="padding: 15px 35px; font-size: 1rem;">
-            Ver Mapa
-        </a>
+        <div class="carousel-container" id="carouselContainer">
+            <div class="polaroid-item"><img src="foto1.jpg" alt="Foto 1"></div>
+            <div class="polaroid-item"><img src="foto2.jpg" alt="Foto 2"></div>
+            <div class="polaroid-item"><img src="foto3.jpg" alt="Foto 3"></div>
+            <div class="polaroid-item"><img src="foto4.jpg" alt="Foto 4"></div>
+            <div class="polaroid-item"><img src="foto5.jpg" alt="Foto 5"></div>
+            <div class="polaroid-item"><img src="foto6.jpg" alt="Foto 6"></div>
+        </div>
+    </div>
+
+    <div class="golden-line"></div>
+
+    <section class="section">
+        <div class="corner-deco corner-top-left"><img src="image_1.png" alt=""></div>
+        <div class="corner-deco corner-top-right"><img src="image_1.png" alt=""></div>
+        <div class="corner-deco corner-bottom-left"><img src="image_2.png" alt=""></div>
+        <div class="corner-deco corner-bottom-right"><img src="image_2.png" alt=""></div>
+        <i class="fas fa-gift" style="font-size:2.5rem;color:var(--gold);margin-bottom:20px;"></i>
+        <h2>Regalos</h2>
+        <p>El mejor regalo es tu presencia. Si deseas regalarme algo más que tu hermosa presencia...</p>
+        <button class="btn" onclick="copyCBU()"><i class="fas fa-university"></i> Número de CBU</button>
     </section>
 
     <section class="section">
@@ -514,47 +440,48 @@
         <div class="corner-deco corner-bottom-left"><img src="image_2.png" alt="Flor Dorada"></div>
         <div class="corner-deco corner-bottom-right"><img src="image_2.png" alt="Flor Dorada"></div>
 
-        <i class="fas fa-gift" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 20px;"></i>
-        <h2>Regalos</h2>
-        <p>El mejor regalo es tu presencia. Si deseas hacerme un presente, puedes optar por la opción de "Lluvia de Sobres" en el salón.</p>
+        <i class="fas fa-user-tie" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 20px;"></i>
+        <h2>Dress Code</h2>
+        <p>Para esta noche tan especial, el código de vestimenta es:</p>
+        <div style="font-family: 'Cinzel Decorative', serif; font-size: 1.5rem; color: var(--gold); margin-top: 10px;">Elegante</div>
     </section>
 
-    <section class="section" style="margin-bottom: 50px;">
-        <div class="corner-deco corner-top-left"><img src="image_1.png" alt="Sol de Rapunzel"></div>
-        <div class="corner-deco corner-top-right"><img src="image_1.png" alt="Sol de Rapunzel"></div>
-        <div class="corner-deco corner-bottom-left"><img src="image_2.png" alt="Flor Dorada"></div>
-        <div class="corner-deco corner-bottom-right"><img src="image_2.png" alt="Flor Dorada"></div>
-
+    <section class="section" style="margin-bottom:50px;">
+        <div class="corner-deco corner-top-left"><img src="image_1.png" alt=""></div>
+        <div class="corner-deco corner-top-right"><img src="image_1.png" alt=""></div>
+        <div class="corner-deco corner-bottom-left"><img src="image_2.png" alt=""></div>
+        <div class="corner-deco corner-bottom-right"><img src="image_2.png" alt=""></div>
         <h2>Confirmación de Asistencia</h2>
         <p>Por favor confirma tu asistencia antes del 1 de Noviembre de 2026.</p>
-        
-        <a href="https://wa.me/5491150069162?text=Hola%20Melanie!%20Quiero%20confirmar%20mi%20asistencia%20a%20tus%2015." class="btn" target="_blank">
-            <i class="fab fa-whatsapp"></i> Confirmar por WhatsApp
-        </a>
+        <a href="https://wa.me/5491150069162?text=Hola%20Melanie!%20Quiero%20confirmar%20mi%20asistencia%20a%20tus%2015." class="btn" target="_blank"><i class="fab fa-whatsapp"></i> Confirmar por WhatsApp</a>
     </section>
 
-    <footer>
-        <p>Mis 15 Años - Melanie | 2026 ✨</p>
-    </footer>
+    <footer><p>Mis 15 Años - Melanie | 2026 ✨</p></footer>
+
+    <div id="calendarModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeModal('calendarModal')"><i class="fas fa-times"></i></div>
+            <h2 class="modal-title">Agendar Fecha</h2>
+            <p>Sábado 5 de Diciembre, 2026 - 21:00 Hs</p>
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+15+Años+-+Melanie&dates=20261205T210000/20261206T050000&details=Te+espero+para+compartir+esta+noche+mágica.&location=Salón+SMILE+Black,+Boulogne+Sur+Mer+633,+Pacheco" target="_blank" class="modal-btn-option"><i class="fab fa-google"></i> Google Calendar</a>
+            <a href="#" id="appleCalendarBtn" class="modal-btn-option"><i class="fab fa-apple"></i> Apple Calendar</a>
+        </div>
+    </div>
+
+    <div id="mapModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeModal('mapModal')"><i class="fas fa-times"></i></div>
+            <h2 class="modal-title">Cómo llegar a la fiesta</h2>
+            <div class="map-wrapper">
+                <div class="map-loader"></div>
+                <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3288.729796030514!2d-58.63666602351283!3d-34.46914595211995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bca46287955555%3A0x6b4c05872120067!2sBoulogne%20Sur%20Mer%20633%2C%20Gral.%20Pacheco%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1703211531123!5m2!1ses!2sar" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" onload="this.classList.add('loaded')"></iframe>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Boulogne+Sur+Mer+633,+Pacheco+Buenos+Aires" target="_blank" class="btn">Ampliar Mapa</a>
+        </div>
+    </div>
 
     <script>
-        const eventDate = new Date("2026-12-05T21:00:00").getTime();
-        const timer = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = eventDate - now;
-            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            days = days < 0 ? 0 : days; hours = hours < 0 ? 0 : hours; minutes = minutes < 0 ? 0 : minutes; seconds = seconds < 0 ? 0 : seconds;
-            const formatTwoDigits = (num) => num.toString().padStart(2, '0');
-            document.getElementById("days").innerText = formatTwoDigits(days);
-            document.getElementById("hours").innerText = formatTwoDigits(hours);
-            document.getElementById("minutes").innerText = formatTwoDigits(minutes);
-            document.getElementById("seconds").innerText = formatTwoDigits(seconds);
-            if (distance < 0) { clearInterval(timer); document.querySelector(".countdown").innerHTML = "<h2>¡Hoy es el gran día!</h2>"; }
-        }, 1000);
-
+        // --- ANIMACIÓN LINTERNAS (Primer script para asegurar carga) ---
         function createLantern() {
             const lantern = document.createElement('div');
             lantern.classList.add('lantern');
@@ -567,8 +494,9 @@
             document.getElementById('lanterns').appendChild(lantern);
             setTimeout(() => { lantern.remove(); }, 25000);
         }
+        // Iniciar linternas
         for(let i = 0; i < 5; i++) createLantern();
-        setInterval(createLantern, 1200);
+        setInterval(createLantern, 2500); // Frecuencia ajustada
 
         function createFirefly() {
             const firefly = document.createElement('div');
@@ -583,39 +511,196 @@
             document.getElementById('fireflies').appendChild(firefly);
             setTimeout(() => { firefly.remove(); }, 5000);
         }
-        setInterval(createFirefly, 200);
+        setInterval(createFirefly, 300);
 
+        // --- COUNTDOWN ---
+        const eventDate = new Date("2026-12-05T21:00:00").getTime();
+        setInterval(function() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const format = (num) => num.toString().padStart(2, '0');
+            document.getElementById("days").innerText = format(days);
+            document.getElementById("hours").innerText = format(hours);
+            document.getElementById("minutes").innerText = format(minutes);
+            document.getElementById("seconds").innerText = format(seconds);
+        }, 1000);
+
+        // --- SCROLL ANIMATION ---
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
+            entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.15 });
         document.querySelectorAll('.section').forEach(section => { observer.observe(section); });
 
-        document.getElementById('scrollBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            const targetPosition = targetSection.offsetTop - 40;
-            const startPosition = window.pageYOffset;
+        // --- CARRUSEL LÓGICA HÍBRIDA (AUTO + DRAG) ---
+        const track = document.getElementById('carouselContainer');
+        const wrapper = document.getElementById('galleryWrapper');
+        
+        // 1. Clonar items para infinito (x4 para asegurar loop suave en pantallas grandes)
+        const itemsHTML = track.innerHTML;
+        track.innerHTML = itemsHTML + itemsHTML + itemsHTML + itemsHTML;
+        
+        // Variables de estado
+        let scrollPos = 0;
+        let isDragging = false;
+        let isPaused = false; // 3. CAMBIO: Variable para pausar
+        let startX = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let animationID;
+        let speed = 0.5; // Velocidad automática
+        let isClick = true; // Para diferenciar clic de arrastre
+
+        // Ancho de un set de imágenes (se calcula al inicio)
+        let itemWidth = 260 + 30; // Ancho polaroid + gap
+        let totalOriginalWidth = itemWidth * 6; // 6 fotos originales
+
+        function animateCarousel() {
+            // 3. CAMBIO: Chequear que no esté pausado
+            if (!isDragging && !isPaused) {
+                scrollPos += speed;
+                // Loop infinito matemático
+                if (scrollPos >= totalOriginalWidth) {
+                    scrollPos = 0;
+                }
+                currentTranslate = -scrollPos;
+                track.style.transform = `translateX(${currentTranslate}px)`;
+            }
+            animationID = requestAnimationFrame(animateCarousel);
+        }
+        
+        // Iniciar loop automático
+        animationID = requestAnimationFrame(animateCarousel);
+
+        // --- EVENTOS DRAG (Mouse & Touch) ---
+        const touchStart = (index) => {
+            return function(event) {
+                isDragging = true;
+                isClick = true; 
+                startX = getPositionX(event);
+                prevTranslate = currentTranslate;
+                cancelAnimationFrame(animationID);
+            }
+        }
+
+        const touchEnd = () => {
+            isDragging = false;
+            scrollPos = -currentTranslate;
+            if (scrollPos < 0) scrollPos += totalOriginalWidth;
+            if (scrollPos >= totalOriginalWidth) scrollPos = scrollPos % totalOriginalWidth;
+            animationID = requestAnimationFrame(animateCarousel);
+        }
+
+        const touchMove = (event) => {
+            if (isDragging) {
+                const currentPosition = getPositionX(event);
+                const diff = currentPosition - startX;
+                if (Math.abs(diff) > 5) isClick = false;
+                currentTranslate = prevTranslate + diff;
+                track.style.transform = `translateX(${currentTranslate}px)`;
+            }
+        }
+
+        function getPositionX(event) {
+            return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+        }
+
+        wrapper.addEventListener('touchstart', touchStart(0), {passive: true});
+        wrapper.addEventListener('touchend', touchEnd);
+        wrapper.addEventListener('touchmove', touchMove, {passive: true});
+
+        wrapper.addEventListener('mousedown', touchStart(0));
+        wrapper.addEventListener('mouseup', touchEnd);
+        wrapper.addEventListener('mouseleave', () => { if(isDragging) touchEnd() });
+        wrapper.addEventListener('mousemove', touchMove);
+
+        // --- LIGHTBOX FUNCIONAL ---
+        track.addEventListener('click', (e) => {
+            if (isClick) {
+                const item = e.target.closest('.polaroid-item');
+                if (item) {
+                    const img = item.querySelector('img');
+                    if (img) {
+                        openLightboxImg(img.src);
+                    }
+                }
+            }
+        });
+
+        function openLightboxImg(src) {
+            isPaused = true; // 3. CAMBIO: Pausar al abrir
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lightbox.classList.add('active');
+            document.body.classList.add('no-scroll');
+        }
+
+        function closeLightbox() {
+            isPaused = false; // 3. CAMBIO: Reanudar al cerrar
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+
+        // --- MODALES & HELPERS ---
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+            document.body.classList.add('no-scroll');
+        }
+        
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+
+        // CBU
+        function copyCBU() {
+            navigator.clipboard.writeText("0000003100017975645141").then(() => {
+                const t = document.getElementById("customToast");
+                t.className = "toast show";
+                setTimeout(() => t.className = t.className.replace("show", ""), 3000);
+            });
+        }
+
+        // --- SCROLL ULTRA SUAVE CORREGIDO (Compensando la animación) ---
+        document.getElementById('scrollBtn').addEventListener('click', (e) => {
+            e.preventDefault(); 
+            
+            const target = document.querySelector('#detalles');
+            const startPosition = window.scrollY || window.pageYOffset;
+            const rectTop = target.getBoundingClientRect().top; // Distancia relativa actual
+            
+            // CORRECCIÓN AQUÍ: 
+            // Restamos 60px: 50px por la animación que sube la caja + 10px de margen visual
+            const offsetCorrection = 60; 
+            
+            const targetPosition = rectTop + startPosition - offsetCorrection;
             const distance = targetPosition - startPosition;
-            const duration = 1800;
-            let start = null;
+            let startTime = null;
+
+            const duration = 2000; // 2 segundos
+
             function animation(currentTime) {
-                if (start === null) start = currentTime;
-                const timeElapsed = currentTime - start;
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                
                 const run = ease(timeElapsed, startPosition, distance, duration);
+                
                 window.scrollTo(0, run);
+                
                 if (timeElapsed < duration) requestAnimationFrame(animation);
             }
+
             function ease(t, b, c, d) {
                 t /= d / 2;
-                if (t < 1) return c / 2 * t * t * t + b;
-                t -= 2;
-                return c / 2 * (t * t * t + 2) + b;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
             }
+
             requestAnimationFrame(animation);
         });
     </script>
